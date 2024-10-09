@@ -1,7 +1,0 @@
-Comandos cmd windows:
-
-cls ---> limpa o prompt de comando;
-
-cd C:\nome da pasta ---> Acessar uma pasta;
-
-.\nome do arquivo ---> executar arquivo dento de uma pasta;

@@ -59,6 +59,7 @@
   "scm.workingSets.enabled": false,
   "git.allowNoVerifyCommit": false,
   "cSpell.words": [
+    "endregion",
     "Hortifruti"
   ],
   "files.associations": {
