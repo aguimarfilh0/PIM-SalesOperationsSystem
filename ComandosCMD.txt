@@ -4,4 +4,4 @@ cls ---> limpa o prompt de comando;
 
 cd C:\nome da pasta ---> Acessar uma pasta;
 
-.\nome do arquivo + extensão (exemplo: .exe) ---> executar arquivo dentro de uma pasta;
+.\nome do arquivo ---> executar arquivo dento de uma pasta;
