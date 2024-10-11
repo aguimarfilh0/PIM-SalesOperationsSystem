@@ -6,18 +6,20 @@
 
 struct foods
 {
-    char name[21];
+    char name[31];
     int quantity;
     float kilo;
-    float priceUnit, priceKilo, totalPrice;
+    float priceUnit, priceKilo, subtotalPrice;
 };
 
 // Lista de alimentos com preços e pesos definidos
-struct foods foods[21];
+struct foods foods[22];
 
 int i, foodCode;
 
 char buyAgain = 's';
+
+float totalPrice;
 
 void FoodRegister()
 {
@@ -117,7 +119,7 @@ void ChoosingFood()
     do
     {
         sleep(1);
-        printf("\nDigite o código do alimento de 0 a 22:\n");
+        printf("\nPor favor, escolha um código de 0 a 21 correspondente ao alimento que deseja comprar da lista acima e digite-o:\n");
         scanf("%d", &foodCode);
 
         switch (foodCode)
@@ -127,12 +129,13 @@ void ChoosingFood()
             scanf("%f", &foods[0].kilo);
 
             // Calculo do valor subtotal do alimento
-            foods[0].totalPrice = foods[0].kilo * foods[0].priceKilo;
+            foods[0].subtotalPrice += foods[0].kilo * foods[0].priceKilo;
 
-            printf("Valor subtotal de %s é R$ %0.2f\n", foods[0].name, foods[0].totalPrice);
+            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[0].name, foods[0].subtotalPrice);
 
+            sleep(1);
             fflush(stdin);
-            printf("Digite 's' para continuar comprando e 'n' para finalizar as compras:\n");
+            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
             scanf(" %c", &buyAgain);
             break;
 
@@ -141,12 +144,13 @@ void ChoosingFood()
             scanf("%d", &foods[1].quantity);
 
             // Calculo do valor subtotal do alimento
-            foods[1].totalPrice = foods[1].quantity * foods[1].priceUnit;
+            foods[1].subtotalPrice += foods[1].quantity * foods[1].priceUnit;
 
-            printf("Valor subtotal de %s é R$ %0.2f\n", foods[1].name, foods[1].totalPrice);
+            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[1].name, foods[1].subtotalPrice);
 
+            sleep(1);
             fflush(stdin);
-            printf("Digite 's' para continuar comprando e 'n' para finalizar as compras:\n");
+            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
             scanf(" %c", &buyAgain);
             break;
 
@@ -155,12 +159,13 @@ void ChoosingFood()
             scanf("%f", &foods[2].kilo);
 
             // Calculo do valor subtotal do alimento
-            foods[2].totalPrice = foods[2].kilo * foods[2].priceKilo;
+            foods[2].subtotalPrice += foods[2].kilo * foods[2].priceKilo;
 
-            printf("Valor subtotal de %s é R$ %0.2f\n", foods[2].name, foods[2].totalPrice);
+            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[2].name, foods[2].subtotalPrice);
 
+            sleep(1);
             fflush(stdin);
-            printf("Digite 's' para continuar comprando e 'n' para finalizar as compras:\n");
+            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
             scanf(" %c", &buyAgain);
             break;
 
@@ -169,12 +174,13 @@ void ChoosingFood()
             scanf("%f", &foods[3].kilo);
 
             // Calculo do valor subtotal do alimento
-            foods[3].totalPrice = foods[3].kilo * foods[3].priceKilo;
+            foods[3].subtotalPrice += foods[3].kilo * foods[3].priceKilo;
 
-            printf("Valor subtotal de %s é R$ %0.2f\n", foods[3].name, foods[3].totalPrice);
+            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[3].name, foods[3].subtotalPrice);
 
+            sleep(1);
             fflush(stdin);
-            printf("Digite 's' para continuar comprando e 'n' para finalizar as compras:\n");
+            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
             scanf(" %c", &buyAgain);
             break;
 
@@ -183,12 +189,13 @@ void ChoosingFood()
             scanf("%f", &foods[4].kilo);
 
             // Calculo do valor subtotal do alimento
-            foods[4].totalPrice = foods[4].kilo * foods[4].priceKilo;
+            foods[4].subtotalPrice += foods[4].kilo * foods[4].priceKilo;
 
-            printf("Valor subtotal de %s é R$ %0.2f\n", foods[4].name, foods[4].totalPrice);
+            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[4].name, foods[4].subtotalPrice);
 
+            sleep(1);
             fflush(stdin);
-            printf("Digite 's' para continuar comprando e 'n' para finalizar as compras:\n");
+            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
             scanf(" %c", &buyAgain);
             break;
 
@@ -197,12 +204,13 @@ void ChoosingFood()
             scanf("%f", &foods[5].kilo);
 
             // Calculo do valor subtotal do alimento
-            foods[5].totalPrice = foods[5].kilo * foods[5].priceKilo;
+            foods[5].subtotalPrice += foods[5].kilo * foods[5].priceKilo;
 
-            printf("Valor subtotal de %s é R$ %0.2f\n", foods[5].name, foods[5].totalPrice);
+            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[5].name, foods[5].subtotalPrice);
 
+            sleep(1);
             fflush(stdin);
-            printf("Digite 's' para continuar comprando e 'n' para finalizar as compras:\n");
+            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
             scanf(" %c", &buyAgain);
             break;
 
@@ -211,12 +219,13 @@ void ChoosingFood()
             scanf("%f", &foods[6].kilo);
 
             // Calculo do valor subtotal do alimento
-            foods[6].totalPrice = foods[6].kilo * foods[6].priceKilo;
+            foods[6].subtotalPrice += foods[6].kilo * foods[6].priceKilo;
 
-            printf("Valor subtotal de %s é R$ %0.2f\n", foods[6].name, foods[6].totalPrice);
+            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[6].name, foods[6].subtotalPrice);
 
+            sleep(1);
             fflush(stdin);
-            printf("Digite 's' para continuar comprando e 'n' para finalizar as compras:\n");
+            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
             scanf(" %c", &buyAgain);
             break;
 
@@ -225,12 +234,13 @@ void ChoosingFood()
             scanf("%f", &foods[7].kilo);
 
             // Calculo do valor subtotal do alimento
-            foods[7].totalPrice = foods[7].kilo * foods[7].priceKilo;
+            foods[7].subtotalPrice += foods[7].kilo * foods[7].priceKilo;
 
-            printf("Valor subtotal de %s é R$ %0.2f\n", foods[7].name, foods[7].totalPrice);
+            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[7].name, foods[7].subtotalPrice);
 
+            sleep(1);
             fflush(stdin);
-            printf("Digite 's' para continuar comprando e 'n' para finalizar as compras:\n");
+            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
             scanf(" %c", &buyAgain);
             break;    
 
@@ -239,12 +249,13 @@ void ChoosingFood()
             scanf("%d", &foods[8].quantity);
 
             // Calculo do valor subtotal do alimento
-            foods[8].totalPrice = foods[8].quantity * foods[8].priceUnit;
+            foods[8].subtotalPrice += foods[8].quantity * foods[8].priceUnit;
 
-            printf("Valor subtotal de %s é R$ %0.2f\n", foods[8].name, foods[8].totalPrice);
+            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[8].name, foods[8].subtotalPrice);
 
+            sleep(1);
             fflush(stdin);
-            printf("Digite 's' para continuar comprando e 'n' para finalizar as compras:\n");
+            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
             scanf(" %c", &buyAgain);
             break;
 
@@ -253,12 +264,13 @@ void ChoosingFood()
             scanf("%d", &foods[9].quantity);
 
             // Calculo do valor subtotal do alimento
-            foods[9].totalPrice = foods[9].quantity * foods[9].priceUnit;
+            foods[9].subtotalPrice += foods[9].quantity * foods[9].priceUnit;
 
-            printf("Valor subtotal de %s é R$ %0.2f\n", foods[9].name, foods[9].totalPrice);
+            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[9].name, foods[9].subtotalPrice);
 
+            sleep(1);
             fflush(stdin);
-            printf("Digite 's' para continuar comprando e 'n' para finalizar as compras:\n");
+            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
             scanf(" %c", &buyAgain);
             break;
 
@@ -267,15 +279,180 @@ void ChoosingFood()
             scanf("%d", &foods[10].quantity);
 
             // Calculo do valor subtotal do alimento
-            foods[10].totalPrice = foods[10].quantity * foods[10].priceUnit;
+            foods[10].subtotalPrice += foods[10].quantity * foods[10].priceUnit;
 
-            printf("Valor subtotal de %s é R$ %0.2f\n", foods[10].name, foods[10].totalPrice);
+            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[10].name, foods[10].subtotalPrice);
 
+            sleep(1);
             fflush(stdin);
-            printf("Digite 's' para continuar comprando e 'n' para finalizar as compras:\n");
+            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
             scanf(" %c", &buyAgain);
             break;
 
+        case 11:
+            printf("Digite quantas unidades de %s você quer comprar:\n", foods[11].name);
+            scanf("%d", &foods[11].quantity);
+
+            // Calculo do valor subtotal do alimento
+            foods[11].subtotalPrice += foods[11].quantity * foods[11].priceUnit;
+
+            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[11].name, foods[11].subtotalPrice);
+
+            sleep(1);
+            fflush(stdin);
+            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
+            scanf(" %c", &buyAgain);
+            break;
+
+        case 12:
+            printf("Digite quantas unidades (bandeja) de %s você quer comprar:\n", foods[12].name);
+            scanf("%d", &foods[12].quantity);
+
+            // Calculo do valor subtotal do alimento
+            foods[12].subtotalPrice += foods[12].quantity * foods[12].priceUnit;
+
+            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[12].name, foods[12].subtotalPrice);
+
+            sleep(1);
+            fflush(stdin);
+            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
+            scanf(" %c", &buyAgain);
+            break;
+
+        case 13:
+            printf("Digite quantos kilos de %s você quer comprar:\n", foods[13].name);
+            scanf("%f", &foods[13].kilo);
+
+            // Calculo do valor subtotal do alimento
+            foods[13].subtotalPrice += foods[13].kilo * foods[13].priceKilo;
+
+            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[13].name, foods[13].subtotalPrice);
+
+            sleep(1);
+            fflush(stdin);
+            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
+            scanf(" %c", &buyAgain);
+            break;
+
+        case 14:
+            printf("Digite quantos kilos de %s você quer comprar:\n", foods[14].name);
+            scanf("%f", &foods[14].kilo);
+
+            // Calculo do valor subtotal do alimento
+            foods[14].subtotalPrice += foods[14].kilo * foods[14].priceKilo;
+
+            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[14].name, foods[14].subtotalPrice);
+
+            sleep(1);
+            fflush(stdin);
+            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
+            scanf(" %c", &buyAgain);
+            break;
+
+        case 15:
+            printf("Digite quantas unidades (bandeja) de %s você quer comprar:\n", foods[15].name);
+            scanf("%d", &foods[15].quantity);
+
+            // Calculo do valor subtotal do alimento
+            foods[15].subtotalPrice += foods[15].quantity * foods[15].priceUnit;
+
+            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[15].name, foods[15].subtotalPrice);
+
+            sleep(1);
+            fflush(stdin);
+            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
+            scanf(" %c", &buyAgain);
+            break;
+
+        case 16:
+            printf("Digite quantas unidades de %s você quer comprar:\n", foods[16].name);
+            scanf("%d", &foods[16].quantity);
+
+            // Calculo do valor subtotal do alimento
+            foods[16].subtotalPrice += foods[16].quantity * foods[16].priceUnit;
+
+            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[16].name, foods[16].subtotalPrice);
+
+            sleep(1);
+            fflush(stdin);
+            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
+            scanf(" %c", &buyAgain);
+            break;
+
+        case 17:
+            printf("Digite quantos kilos de %s você quer comprar:\n", foods[17].name);
+            scanf("%f", &foods[17].kilo);
+
+            // Calculo do valor subtotal do alimento
+            foods[17].subtotalPrice += foods[17].kilo * foods[17].priceKilo;
+
+            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[17].name, foods[17].subtotalPrice);
+
+            sleep(1);
+            fflush(stdin);
+            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
+            scanf(" %c", &buyAgain);
+            break;
+
+        case 18:
+            printf("Digite quantas unidades (por maço) de %s você quer comprar:\n", foods[18].name);
+            scanf("%d", &foods[18].quantity);
+
+            // Calculo do valor subtotal do alimento
+            foods[18].subtotalPrice += foods[18].quantity * foods[18].priceUnit;
+
+            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[18].name, foods[18].subtotalPrice);
+
+            sleep(1);
+            fflush(stdin);
+            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
+            scanf(" %c", &buyAgain);
+            break;
+
+        case 19:
+            printf("Digite quantas unidades (por maço) de %s você quer comprar:\n", foods[19].name);
+            scanf("%d", &foods[19].quantity);
+
+            // Calculo do valor subtotal do alimento
+            foods[19].subtotalPrice += foods[19].quantity * foods[19].priceUnit;
+
+            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[19].name, foods[19].subtotalPrice);
+
+            sleep(1);
+            fflush(stdin);
+            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
+            scanf(" %c", &buyAgain);
+            break;
+
+        case 20:
+            printf("Digite quantas unidades de %s você quer comprar:\n", foods[20].name);
+            scanf("%d", &foods[20].quantity);
+
+            // Calculo do valor subtotal do alimento
+            foods[20].subtotalPrice += foods[20].quantity * foods[20].priceUnit;
+
+            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[20].name, foods[20].subtotalPrice);
+
+            sleep(1);
+            fflush(stdin);
+            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
+            scanf(" %c", &buyAgain);
+            break;
+            
+        case 21:
+            printf("Digite quantas unidades de %s você quer comprar:\n", foods[21].name);
+            scanf("%d", &foods[21].quantity);
+
+            // Calculo do valor subtotal do alimento
+            foods[21].subtotalPrice += foods[21].quantity * foods[21].priceUnit;
+
+            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[21].name, foods[21].subtotalPrice);
+
+            sleep(1);
+            fflush(stdin);
+            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
+            scanf(" %c", &buyAgain);
+            break;
         default: printf("Código digitado inválido!\n");
         }
     } while (buyAgain == 's');
@@ -297,12 +474,16 @@ int main(void)
     // Escolha dos alimentos para comprar
     ChoosingFood();
 
-    // Calcular total das compras através da soma dos subtotais (priceTotal) de cada alimento, utilizando for
-
-    // Exibir total das compras na tela
-
+    // Calcular total das compras através da soma dos subtotais (subtotalPrice) de cada alimento
+    for (i = 0; i < 22; i++)
+    {
+        totalPrice += foods[i].subtotalPrice;
+    }
+    
     sleep(1);
-    puts("Programa concluído!");
+    printf("\nO valor total a pagar é igual a R$ %0.2f\n", totalPrice);
+    sleep(1);
+    puts("\nCompra concluída!\n");
     system("pause");
     return 0;
 }
