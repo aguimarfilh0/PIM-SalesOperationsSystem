@@ -16,7 +16,7 @@ struct foods
 // Lista de alimentos com preços e pesos definidos
 struct foods foods[22];
 
-int i, foodCode, foodList[21][3];
+int i, foodCode;
 
 char buyAgain = 's';
 
@@ -26,112 +26,112 @@ void FoodRegister()
 {
     // CADASTRO DE ALIMENTOS
     // Abacate / kg
-    strcpy(foods[0].name, "Abacate");
+    strcpy(foods[0].name, "Abacate        ");
     foods[0].buyOption = 1;
     foods[0].priceKilo = 6.50f;
 
     // Abacaxi / unidade
-    strcpy(foods[1].name, "Abacaxi");
+    strcpy(foods[1].name, "Abacaxi        ");
     foods[1].buyOption = 0;
     foods[1].priceUnit = 5;
 
     // Ameixa / kg
-    strcpy(foods[2].name, "Ameixa");
+    strcpy(foods[2].name, "Ameixa         ");
     foods[2].buyOption = 1;
     foods[2].priceKilo = 5;
 
     // Banana / kg
-    strcpy(foods[3].name, "Banana");
+    strcpy(foods[3].name, "Banana         ");
     foods[3].buyOption = 1;
     foods[3].priceKilo = 7;
 
     // Kiwi / kg
-    strcpy(foods[4].name, "Kiwi"); 
+    strcpy(foods[4].name, "Kiwi           "); 
     foods[4].buyOption = 1;
     foods[4].priceKilo = 15;
 
     // Laranja kg
-    strcpy(foods[5].name, "Laranja");
+    strcpy(foods[5].name, "Laranja        ");
     foods[5].buyOption = 1;
     foods[5].priceKilo = 6;
 
     // Limão / kg
-    strcpy(foods[6].name, "Limão");
+    strcpy(foods[6].name, "Limão          ");
     foods[6].buyOption = 1;
     foods[6].priceKilo = 7.99f;
 
     // Maçã / kg
-    strcpy(foods[7].name, "Maçã");
+    strcpy(foods[7].name, "Maçã           ");
     foods[7].buyOption = 1;
     foods[7].priceKilo = 8;
 
     // Manga / unidade
-    strcpy(foods[8].name, "Manga");
+    strcpy(foods[8].name, "Manga          ");
     foods[8].buyOption = 0;
     foods[8].priceUnit = 3.50f;
 
     // Melão / unidade
-    strcpy(foods[9].name, "Melão");
+    strcpy(foods[9].name, "Melão          ");
     foods[9].buyOption = 0;
     foods[9].priceUnit = 10;
 
     // Melancia / unidade
-    strcpy(foods[10].name, "Melancia");
+    strcpy(foods[10].name, "Melancia      ");
     foods[10].buyOption = 0;
     foods[10].priceUnit = 25;
 
     // Mamão / unidade
-    strcpy(foods[11].name, "Mamão");
+    strcpy(foods[11].name, "Mamão         ");
     foods[11].buyOption = 0;
     foods[11].priceUnit = 8.50f;
 
     // Morango (bandeja) / unidade
-    strcpy(foods[12].name, "Morango");
+    strcpy(foods[12].name, "Morango       ");
     foods[12].buyOption = 0;
     foods[12].priceUnit = 7;
 
     // Pera / kg
-    strcpy(foods[13].name, "Pera");
+    strcpy(foods[13].name, "Pera          ");
     foods[13].buyOption = 1;
     foods[13].priceKilo = 8.50f;
 
     // Pêssego / kg
-    strcpy(foods[14].name, "Pêssego");
+    strcpy(foods[14].name, "Pêssego       ");
     foods[14].buyOption = 1;
     foods[14].priceKilo = 5.50f;
 
     // Uva (bandeja) / unidade
-    strcpy(foods[15].name, "Uva");
+    strcpy(foods[15].name, "Uva           ");
     foods[15].buyOption = 0;
     foods[15].priceUnit = 10;
 
     // Brócolis / unidade
-    strcpy(foods[16].name, "Brócolis");
+    strcpy(foods[16].name, "Brócolis      ");
     foods[16].buyOption = 0;
     foods[16].priceUnit = 3;
 
     // Cenoura / kg
-    strcpy(foods[17].name, "Cenoura");
+    strcpy(foods[17].name, "Cenoura       ");
     foods[17].buyOption = 1;
     foods[17].priceKilo = 4;
 
     // Couve  (por maço) / unidade
-    strcpy(foods[18].name, "Couve");
+    strcpy(foods[18].name, "Couve         ");
     foods[18].buyOption = 0;
     foods[18].priceUnit = 2.50f;
 
     // Espinafre  (por maço) / unidade
-    strcpy(foods[19].name, "Espinafre");
+    strcpy(foods[19].name, "Espinafre     ");
     foods[19].buyOption = 0;
     foods[19].priceUnit = 4;
 
     // Repolho / unidade
-    strcpy(foods[20].name, "Repolho");
+    strcpy(foods[20].name, "Repolho       ");
     foods[20].buyOption = 0;
     foods[20].priceUnit = 5;
 
     // Alface / unidade
-    strcpy(foods[21].name, "Alface");
+    strcpy(foods[21].name, "Alface        ");
     foods[21].buyOption = 0;
     foods[21].priceUnit = 3.50f;
 }
@@ -484,7 +484,7 @@ int main(void)
 
     printf("----------------------------------------------------------------------------------------------");
     // Exibe a lista de alimentos com os nomes dos alimentos, preços e códigos na tela
-    printf("\nALIMENTOS\t\t\t PREÇOS\t\t\t\t      CÓDIGOS\n");
+    printf("\nALIMENTOS\t\t\t\t PREÇOS\t\t\t\t      CÓDIGOS\n");
     printf("----------------------------------------------------------------------------------------------\n");
     for (i = 0; i < 22; i++) // índice de linha 
     {
