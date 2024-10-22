@@ -20,7 +20,7 @@ int i, foodCode;
 
 char buyAgain = 's';
 
-float totalPrice;
+double totalPrice, valueReceived, change;
 
 void FoodRegister()
 {
@@ -121,7 +121,7 @@ void FoodRegister()
     foods[18].priceUnit = 2.50f;
 
     // Espinafre  (por maço) / unidade
-    strcpy(foods[19].name, "Espinafre ");
+    strcpy(foods[19].name, "Espinafre");
     foods[19].buyOption = 0;
     foods[19].priceUnit = 4;
 
@@ -154,320 +154,40 @@ void ChoosingFood()
     do
     {
         sleep(1);
-        printf("\nPor favor, escolha um código de 0 a 21 correspondente ao alimento que deseja comprar da lista acima e digite-o:\n");
+        printf("\nPor favor, digite o código do produto:\n");
         scanf("%d", &foodCode);
 
-        switch (foodCode)
+        // Verifica se o código foi digitado corretamente
+        if (foodCode >= 0 && foodCode < 22) 
         {
-        case 0:
-            printf("Digite quantos kilos de %s você quer comprar:\n", foods[0].name);
-            scanf("%f", &foods[0].kilo);
-
-            CalculatingFoodPerKilo(0);
-
-            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[0].name, foods[0].subtotalPrice);
-
-            sleep(1);
-            fflush(stdin);
-            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
-            scanf(" %c", &buyAgain);
-            break;
-
-        case 1:
-            printf("Digite quantas unidades de %s você quer comprar:\n", foods[1].name);
-            scanf("%d", &foods[1].quantity);
-
-            CalculatingFoodPerUnit(1);
-
-            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[1].name, foods[1].subtotalPrice);
+            // Verifica a opção de compra, '0' para unidade e '1' para kilo
+            if (foods[foodCode].buyOption == 0) 
+            {
+                sleep(1);
+                printf("Você escolheu %s, agora digite a quantidade (un.):\n", foods[foodCode].name);
+                scanf("%d", &foods[foodCode].quantity);
+                CalculatingFoodPerUnit(foodCode);
+            } 
+            else if (foods[foodCode].buyOption == 1)
+            {
+                sleep(1);
+                printf("Você escolheu %s, agora digite a quantidade (kg.):\n", foods[foodCode].name);
+                scanf("%f", &foods[foodCode].kilo);
+                CalculatingFoodPerKilo(foodCode);
+            }
 
             sleep(1);
-            fflush(stdin);
-            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
-            scanf(" %c", &buyAgain);
-            break;
-
-        case 2:
-            printf("Digite quantos kilos de %s você quer comprar:\n", foods[2].name);
-            scanf("%f", &foods[2].kilo);
-
-            CalculatingFoodPerKilo(2);
-
-            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[2].name, foods[2].subtotalPrice);
-
+            printf("Você escolheu %s, subtotal = R$ %0.2f\n", foods[foodCode].name, foods[foodCode].subtotalPrice);
+        } 
+        else 
+        {
             sleep(1);
-            fflush(stdin);
-            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
-            scanf(" %c", &buyAgain);
-            break;
-
-        case 3:
-            printf("Digite quantos kilos de %s você quer comprar:\n", foods[3].name);
-            scanf("%f", &foods[3].kilo);
-
-            CalculatingFoodPerKilo(3);
-
-            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[3].name, foods[3].subtotalPrice);
-
-            sleep(1);
-            fflush(stdin);
-            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
-            scanf(" %c", &buyAgain);
-            break;
-
-        case 4:
-            printf("Digite quantos kilos de %s você quer comprar:\n", foods[4].name);
-            scanf("%f", &foods[4].kilo);
-
-            CalculatingFoodPerKilo(4);
-
-            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[4].name, foods[4].subtotalPrice);
-
-            sleep(1);
-            fflush(stdin);
-            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
-            scanf(" %c", &buyAgain);
-            break;
-
-        case 5:
-            printf("Digite quantos kilos de %s você quer comprar:\n", foods[5].name);
-            scanf("%f", &foods[5].kilo);
-
-            CalculatingFoodPerKilo(5);
-
-            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[5].name, foods[5].subtotalPrice);
-
-            sleep(1);
-            fflush(stdin);
-            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
-            scanf(" %c", &buyAgain);
-            break;
-
-        case 6:
-            printf("Digite quantos kilos de %s você quer comprar:\n", foods[6].name);
-            scanf("%f", &foods[6].kilo);
-
-            CalculatingFoodPerKilo(6);
-
-            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[6].name, foods[6].subtotalPrice);
-
-            sleep(1);
-            fflush(stdin);
-            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
-            scanf(" %c", &buyAgain);
-            break;
-
-        case 7:
-            printf("Digite quantos kilos de %s você quer comprar:\n", foods[7].name);
-            scanf("%f", &foods[7].kilo);
-
-            CalculatingFoodPerKilo(7);
-
-            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[7].name, foods[7].subtotalPrice);
-
-            sleep(1);
-            fflush(stdin);
-            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
-            scanf(" %c", &buyAgain);
-            break;    
-
-        case 8:
-            printf("Digite quantas unidades de %s você quer comprar:\n", foods[8].name);
-            scanf("%d", &foods[8].quantity);
-
-            CalculatingFoodPerUnit(8);
-
-            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[8].name, foods[8].subtotalPrice);
-
-            sleep(1);
-            fflush(stdin);
-            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
-            scanf(" %c", &buyAgain);
-            break;
-
-        case 9:
-            printf("Digite quantas unidades de %s você quer comprar:\n", foods[9].name);
-            scanf("%d", &foods[9].quantity);
-
-            CalculatingFoodPerUnit(9);
-
-            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[9].name, foods[9].subtotalPrice);
-
-            sleep(1);
-            fflush(stdin);
-            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
-            scanf(" %c", &buyAgain);
-            break;
-
-        case 10:
-            printf("Digite quantas unidades de %s você quer comprar:\n", foods[10].name);
-            scanf("%d", &foods[10].quantity);
-
-            CalculatingFoodPerUnit(10);
-
-            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[10].name, foods[10].subtotalPrice);
-
-            sleep(1);
-            fflush(stdin);
-            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
-            scanf(" %c", &buyAgain);
-            break;
-
-        case 11:
-            printf("Digite quantas unidades de %s você quer comprar:\n", foods[11].name);
-            scanf("%d", &foods[11].quantity);
-
-            CalculatingFoodPerUnit(11);
-
-            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[11].name, foods[11].subtotalPrice);
-
-            sleep(1);
-            fflush(stdin);
-            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
-            scanf(" %c", &buyAgain);
-            break;
-
-        case 12:
-            printf("Digite quantas unidades (bandeja) de %s você quer comprar:\n", foods[12].name);
-            scanf("%d", &foods[12].quantity);
-
-            CalculatingFoodPerUnit(12);
-
-            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[12].name, foods[12].subtotalPrice);
-
-            sleep(1);
-            fflush(stdin);
-            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
-            scanf(" %c", &buyAgain);
-            break;
-
-        case 13:
-            printf("Digite quantos kilos de %s você quer comprar:\n", foods[13].name);
-            scanf("%f", &foods[13].kilo);
-
-            CalculatingFoodPerKilo(13);
-
-            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[13].name, foods[13].subtotalPrice);
-
-            sleep(1);
-            fflush(stdin);
-            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
-            scanf(" %c", &buyAgain);
-            break;
-
-        case 14:
-            printf("Digite quantos kilos de %s você quer comprar:\n", foods[14].name);
-            scanf("%f", &foods[14].kilo);
-
-            CalculatingFoodPerKilo(14);
-
-            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[14].name, foods[14].subtotalPrice);
-
-            sleep(1);
-            fflush(stdin);
-            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
-            scanf(" %c", &buyAgain);
-            break;
-
-        case 15:
-            printf("Digite quantas unidades (bandeja) de %s você quer comprar:\n", foods[15].name);
-            scanf("%d", &foods[15].quantity);
-
-            CalculatingFoodPerUnit(15);
-
-            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[15].name, foods[15].subtotalPrice);
-
-            sleep(1);
-            fflush(stdin);
-            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
-            scanf(" %c", &buyAgain);
-            break;
-
-        case 16:
-            printf("Digite quantas unidades de %s você quer comprar:\n", foods[16].name);
-            scanf("%d", &foods[16].quantity);
-
-            CalculatingFoodPerUnit(16);
-
-            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[16].name, foods[16].subtotalPrice);
-
-            sleep(1);
-            fflush(stdin);
-            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
-            scanf(" %c", &buyAgain);
-            break;
-
-        case 17:
-            printf("Digite quantos kilos de %s você quer comprar:\n", foods[17].name);
-            scanf("%f", &foods[17].kilo);
-
-            CalculatingFoodPerKilo(17);
-
-            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[17].name, foods[17].subtotalPrice);
-
-            sleep(1);
-            fflush(stdin);
-            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
-            scanf(" %c", &buyAgain);
-            break;
-
-        case 18:
-            printf("Digite quantas unidades (por maço) de %s você quer comprar:\n", foods[18].name);
-            scanf("%d", &foods[18].quantity);
-
-            CalculatingFoodPerUnit(18);
-
-            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[18].name, foods[18].subtotalPrice);
-
-            sleep(1);
-            fflush(stdin);
-            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
-            scanf(" %c", &buyAgain);
-            break;
-
-        case 19:
-            printf("Digite quantas unidades (por maço) de %s você quer comprar:\n", foods[19].name);
-            scanf("%d", &foods[19].quantity);
-
-            CalculatingFoodPerUnit(19);
-
-            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[19].name, foods[19].subtotalPrice);
-
-            sleep(1);
-            fflush(stdin);
-            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
-            scanf(" %c", &buyAgain);
-            break;
-
-        case 20:
-            printf("Digite quantas unidades de %s você quer comprar:\n", foods[20].name);
-            scanf("%d", &foods[20].quantity);
-
-            CalculatingFoodPerUnit(20);
-
-            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[20].name, foods[20].subtotalPrice);
-
-            sleep(1);
-            fflush(stdin);
-            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
-            scanf(" %c", &buyAgain);
-            break;
-            
-        case 21:
-            printf("Digite quantas unidades de %s você quer comprar:\n", foods[21].name);
-            scanf("%d", &foods[21].quantity);
-
-            CalculatingFoodPerUnit(21);
-
-            printf("O valor subtotal de %s a pagar é igual a R$ %0.2f\n", foods[21].name, foods[21].subtotalPrice);
-
-            sleep(1);
-            fflush(stdin);
-            printf("\nDigite 's' para continuar comprando e 'n' para finalizar as compras:\n");
-            scanf(" %c", &buyAgain);
-            break;
-        default: printf("Código digitado inválido!\n");
+            printf("Código digitado inválido!\n");
         }
+
+        sleep(1);
+        printf("\nDigite 's' para continuar ou 'n' para finalizar a venda:\n");
+        scanf(" %c", &buyAgain);
     } while (buyAgain == 's');
 }
 
@@ -478,9 +198,9 @@ int main(void)
     // Cadastra os alimentos
     FoodRegister();
 
-    puts("Loja Hortifruti\n");
+    puts("Hortifruti Viva Bem\n");
     sleep(1);
-    puts("Lista de alimentos disponíveis para comprar:");
+    puts("Listagem de Produtos");
 
     printf("-----------------------------------------------------------------------------------");
     // Exibe a lista de alimentos com os nomes dos alimentos, preços e códigos na tela
@@ -510,9 +230,20 @@ int main(void)
     }
     
     sleep(1);
-    printf("\nO valor total a pagar é igual a R$ %0.2f\n", totalPrice);
+    printf("\nValor total a pagar = R$ %0.2lf\n", totalPrice);
+
     sleep(1);
-    puts("\nCompra concluída!\n");
+    printf("\nValor recebido do cliente:\n");
+    scanf("%lf", &valueReceived);
+
+    // Calculo do troco do cliente
+    change = valueReceived - totalPrice;
+
+    sleep(1);
+    printf("\nTroco = R$ %0.2lf\n", change);
+
+    sleep(1);
+    puts("\nVenda realizada com sucesso!\n");
     system("pause");
     return 0;
 }
