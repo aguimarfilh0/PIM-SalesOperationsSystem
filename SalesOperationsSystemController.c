@@ -6,7 +6,7 @@
 
 struct foods
 {
-    char name[31];
+    char name[21];
     int buyOption;
     int quantity;
     float kilo;
@@ -236,14 +236,27 @@ int main(void)
     printf("\nValor recebido do cliente:\n");
     scanf("%lf", &valueReceived);
 
-    // Calculo do troco do cliente
-    change = valueReceived - totalPrice;
+    // Verifica se o valor recebido pelo cliente é suficiente para realizar o pagamento
+    if (valueReceived < totalPrice)
+    {
+        sleep(1);
+        puts("\nValor insuficiente!\n");
+        sleep(1);
+        puts("Venda cancelada!\n");
+        system("pause");
+    }
+    else
+    {
+        // Calculo do troco do cliente
+        change = valueReceived - totalPrice;
 
-    sleep(1);
-    printf("\nTroco = R$ %0.2lf\n", change);
+        sleep(1);
+        printf("\nTroco = R$ %0.2lf\n", change);
 
-    sleep(1);
-    puts("\nVenda realizada com sucesso!\n");
-    system("pause");
+        sleep(1);
+        puts("\nVenda realizada com sucesso!\n");
+        system("pause");
+    }
+    
     return 0;
 }
