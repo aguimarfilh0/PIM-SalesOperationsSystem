@@ -4,184 +4,183 @@
 #include <locale.h>
 #include <time.h>
 
-struct foods
+#define CLEAR_BUFFER while (getchar() != '\n');
+#define FOODS_SIZE 22
+
+typedef struct foods
 {
     char name[21];
     int buyOption;
     int quantity;
     float kilo;
     float priceUnit, priceKilo, subtotalPrice;
-};
+} FoodRecord;
 
 // Lista de alimentos com preços e pesos definidos
 struct foods foods[22];
 
-int i, foodCode;
+int i, foodCode = 0;
 
-char buyAgain = 's';
+// SISTEMA DE SALVAMENTO DE DADOS
+void WriteFileFoods(FoodRecord *pFoods, int size)
+{
+    FILE *file;
+    file = fopen("SaveFoodRecord.bin", "wb");
+    if (file == NULL)
+    {
+        puts("Erro na abertura do arquivo!");
+        sleep(3);
+        exit(1);
+    }
 
-double totalPrice, valueReceived, change;
+    int savedFiles;
+    savedFiles = fwrite(pFoods, sizeof(FoodRecord), size, file);
+    if (savedFiles != size)
+    {
+        puts("Erro na escrita do arquivo!");
+    }
+
+    fclose(file);
+}
+
+void ReadFileFoods(FoodRecord *pFoods, int size)
+{
+    FILE *file;
+    file = fopen("SaveFoodRecord.bin", "rb");
+    if (file == NULL)
+    {
+        puts("Erro na abertura do arquivo!");
+        sleep(3);
+        exit(1);
+    }
+
+    int savedFiles;
+    savedFiles = fread(pFoods, sizeof(FoodRecord), size, file);
+    if (savedFiles != size)
+    {
+        puts("Erro na leitura do arquivo!");
+    }
+
+    fclose(file);
+}
+
+void ChooseOption()
+{
+    char recordOption = '1', chooseAgain = '0';
+    
+    // Executa a escolha de opções sobre os dados dos produtos
+    do
+    {
+        sleep(1);
+        puts("\nDigite:");
+        puts("'1' Cadastrar alimentos");
+        puts("'2' Consultar dados dos alimentos");
+        puts("'3' Sair\n");
+
+        scanf(" %c", &recordOption);
+
+        switch (recordOption)
+        {
+            // Cadastro de produtos
+            case '1':
+                for (i = 0; i < FOODS_SIZE; i++)
+                {
+                    FoodRegister();
+                }
+
+                WriteFileFoods(foods, FOODS_SIZE);
+                puts("\nCadastro realizado com sucesso!");
+                break;
+
+            // Acesso de dados
+            case '2':
+                ReadFileFoods(foods, FOODS_SIZE);
+                puts("\nDados acessados com sucesso!");
+                break;
+
+            // Sair        
+            case '3':
+                exit(1);
+                break;
+
+            default:
+                printf("\nCódigo inválido!\n");
+        }
+
+        printf("\nDigite '0' para repetir opções ou '1' para prosseguir:\n");
+        scanf(" %c", &chooseAgain);
+    } while (chooseAgain == '0');
+}
 
 void FoodRegister()
 {
-    // CADASTRO DE ALIMENTOS
-    // Abacate / kg
-    strcpy(foods[0].name, "Abacate");
-    foods[0].buyOption = 1;
-    foods[0].priceKilo = 6.50f;
+    printf("\nNome do produto:\n");
+    CLEAR_BUFFER
+    scanf("%20[^\n]", foods[i].name);
 
-    // Abacaxi / unidade
-    strcpy(foods[1].name, "Abacaxi");
-    foods[1].buyOption = 0;
-    foods[1].priceUnit = 5;
+    printf("Digite '0' para (un.) ou '1' para (kg.):\n");
+    scanf("%d", &foods[i].buyOption);
 
-    // Ameixa / kg
-    strcpy(foods[2].name, "Ameixa");
-    foods[2].buyOption = 1;
-    foods[2].priceKilo = 5;
+    if (foods[i].buyOption == 0)
+    {
+        printf("Quantidade p/ cálculo:\n");
+        scanf("%d", &foods[i].quantity);
 
-    // Banana / kg
-    strcpy(foods[3].name, "Banana");
-    foods[3].buyOption = 1;
-    foods[3].priceKilo = 7;
+        printf("Preço por (un.):\n");
+        scanf("%f", &foods[i].priceUnit);
+    }
+    else if (foods[i].buyOption == 1)
+    {
+        printf("Kilo p/ cálculo:\n");
+        scanf("%f", &foods[i].kilo);
 
-    // Kiwi / kg
-    strcpy(foods[4].name, "Kiwi"); 
-    foods[4].buyOption = 1;
-    foods[4].priceKilo = 15;
-
-    // Laranja kg
-    strcpy(foods[5].name, "Laranja");
-    foods[5].buyOption = 1;
-    foods[5].priceKilo = 6;
-
-    // Limão / kg
-    strcpy(foods[6].name, "Limão");
-    foods[6].buyOption = 1;
-    foods[6].priceKilo = 7.99f;
-
-    // Maçã / kg
-    strcpy(foods[7].name, "Maçã");
-    foods[7].buyOption = 1;
-    foods[7].priceKilo = 8;
-
-    // Manga / unidade
-    strcpy(foods[8].name, "Manga");
-    foods[8].buyOption = 0;
-    foods[8].priceUnit = 3.50f;
-
-    // Melão / unidade
-    strcpy(foods[9].name, "Melão");
-    foods[9].buyOption = 0;
-    foods[9].priceUnit = 10;
-
-    // Melancia / unidade
-    strcpy(foods[10].name, "Melancia");
-    foods[10].buyOption = 0;
-    foods[10].priceUnit = 25;
-
-    // Mamão / unidade
-    strcpy(foods[11].name, "Mamão");
-    foods[11].buyOption = 0;
-    foods[11].priceUnit = 8.50f;
-
-    // Morango (bandeja) / unidade
-    strcpy(foods[12].name, "Morango");
-    foods[12].buyOption = 0;
-    foods[12].priceUnit = 7;
-
-    // Pera / kg
-    strcpy(foods[13].name, "Pera");
-    foods[13].buyOption = 1;
-    foods[13].priceKilo = 8.50f;
-
-    // Pêssego / kg
-    strcpy(foods[14].name, "Pêssego");
-    foods[14].buyOption = 1;
-    foods[14].priceKilo = 5.50f;
-
-    // Uva (bandeja) / unidade
-    strcpy(foods[15].name, "Uva");
-    foods[15].buyOption = 0;
-    foods[15].priceUnit = 10;
-
-    // Brócolis / unidade
-    strcpy(foods[16].name, "Brócolis");
-    foods[16].buyOption = 0;
-    foods[16].priceUnit = 3;
-
-    // Cenoura / kg
-    strcpy(foods[17].name, "Cenoura");
-    foods[17].buyOption = 1;
-    foods[17].priceKilo = 4;
-
-    // Couve  (por maço) / unidade
-    strcpy(foods[18].name, "Couve");
-    foods[18].buyOption = 0;
-    foods[18].priceUnit = 2.50f;
-
-    // Espinafre  (por maço) / unidade
-    strcpy(foods[19].name, "Espinafre");
-    foods[19].buyOption = 0;
-    foods[19].priceUnit = 4;
-
-    // Repolho / unidade
-    strcpy(foods[20].name, "Repolho");
-    foods[20].buyOption = 0;
-    foods[20].priceUnit = 5;
-
-    // Alface / unidade
-    strcpy(foods[21].name, "Alface");
-    foods[21].buyOption = 0;
-    foods[21].priceUnit = 3.50f;
+        printf("Preço por (kg.):\n");
+        scanf("%f", &foods[i].priceKilo);
+    }
+    else
+    {
+        printf("Opção inválida!\n");
+    }
 }
 
 float CalculatingFoodPerUnit(int foodCode)
 {
-    // Calculo do valor subtotal do alimento por unidade
     foods[foodCode].subtotalPrice += foods[foodCode].quantity * foods[foodCode].priceUnit;
 }
 
 float CalculatingFoodPerKilo(int foodCode)
 {
-    // Calculo do valor subtotal do alimento por kilo
     foods[foodCode].subtotalPrice += foods[foodCode].kilo * foods[foodCode].priceKilo;
 }
 
-void ChoosingFood()
+void ChooseFood()
 {
-    // Faz a escolha dos alimentos que serão comprados e calcula o valor do subtotal de cada alimento
+    char buyAgain = 's';
+
     do
     {
-        sleep(1);
         printf("\nPor favor, digite o código do produto:\n");
         scanf("%d", &foodCode);
 
-        // Verifica se o código foi digitado corretamente
-        if (foodCode >= 0 && foodCode < 22) 
+        if (foodCode >= 0 && foodCode < FOODS_SIZE)
         {
-            // Verifica a opção de compra, '0' para unidade e '1' para kilo
-            if (foods[foodCode].buyOption == 0) 
+            if (foods[foodCode].buyOption == 0)
             {
-                sleep(1);
                 printf("Você escolheu %s, agora digite a quantidade (un.):\n", foods[foodCode].name);
                 scanf("%d", &foods[foodCode].quantity);
                 CalculatingFoodPerUnit(foodCode);
-            } 
+            }
             else if (foods[foodCode].buyOption == 1)
             {
-                sleep(1);
                 printf("Você escolheu %s, agora digite a quantidade (kg.):\n", foods[foodCode].name);
                 scanf("%f", &foods[foodCode].kilo);
                 CalculatingFoodPerKilo(foodCode);
             }
 
-            sleep(1);
             printf("Você escolheu %s, subtotal = R$ %0.2f\n", foods[foodCode].name, foods[foodCode].subtotalPrice);
-        } 
-        else 
+        }
+        else
         {
-            sleep(1);
             printf("Código digitado inválido!\n");
         }
 
@@ -195,23 +194,23 @@ int main(void)
 {
     setlocale(LC_ALL, "pt_BR.UTF-8");
 
-    // Cadastra os alimentos
-    FoodRegister();
+    double totalPrice = 0, valueReceived = 0, change = 0;
 
-    puts("Hortifruti Viva Bem\n");
+    ChooseOption();
+
+    sleep(1);
+    puts("\nHortifruti Viva Bem\n");
     sleep(1);
     puts("Listagem de Produtos");
 
     printf("-----------------------------------------------------------------------------------");
-    // Exibe a lista de alimentos com os nomes dos alimentos, preços e códigos na tela
     printf("\nALIMENTOS\t\t\t PREÇOS\t\t\t\t      CÓDIGOS\n");
     printf("-----------------------------------------------------------------------------------\n");
-    for (i = 0; i < 22; i++) // índice de linha 
+    for (i = 0; i < FOODS_SIZE; i++)
     {
-        // Identifica a opção de compra do alimento, '0' para unidades e '1' para kilos
         if (foods[i].buyOption == 0)
         {
-            printf("%s\t\t\t\t R$ %0.2f/un\t\t\t\t %d\n", foods[i].name, foods[i].priceUnit, i); 
+            printf("%s\t\t\t\t R$ %0.2f/un\t\t\t\t %d\n", foods[i].name, foods[i].priceUnit, i);
         }
         else
         {
@@ -219,44 +218,32 @@ int main(void)
         }
     }
     printf("-----------------------------------------------------------------------------------\n");
-    
-    // Escolha dos alimentos para comprar
-    ChoosingFood();
 
-    // Calcular total das compras através da soma dos subtotais (subtotalPrice) de cada alimento
-    for (i = 0; i < 22; i++)
+    ChooseFood();
+
+    for (i = 0; i < FOODS_SIZE; i++)
     {
         totalPrice += foods[i].subtotalPrice;
     }
-    
-    sleep(1);
+
     printf("\nValor total a pagar = R$ %0.2lf\n", totalPrice);
 
-    sleep(1);
     printf("\nValor recebido do cliente:\n");
     scanf("%lf", &valueReceived);
 
-    // Verifica se o valor recebido pelo cliente é suficiente para realizar o pagamento
-    if (valueReceived < totalPrice)
+    if (valueReceived >= totalPrice)
     {
-        sleep(1);
-        puts("\nValor insuficiente!\n");
-        sleep(1);
-        puts("Venda cancelada!\n");
+        change = valueReceived - totalPrice;
+        printf("\nTroco = R$ %0.2lf\n", change);
+        puts("\nVenda realizada com sucesso!\n");
         system("pause");
     }
     else
     {
-        // Calculo do troco do cliente
-        change = valueReceived - totalPrice;
-
-        sleep(1);
-        printf("\nTroco = R$ %0.2lf\n", change);
-
-        sleep(1);
-        puts("\nVenda realizada com sucesso!\n");
+        puts("\nValor insuficiente!\n");
+        puts("Venda cancelada!\n");
         system("pause");
     }
-    
+
     return 0;
 }
