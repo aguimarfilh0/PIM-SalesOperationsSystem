@@ -26,4 +26,4 @@ Or you can watch the **.mp4** demo video located in the same **"Software" folder
 
 This software is available under the following licenses:
 
-- [MIT](https://rem.mit-license.org](https://github.com/aguimarfilh0/PIM-SalesOperationsSystem/blob/main/LICENSE))
+- [MIT](https://github.com/aguimarfilh0/PIM-SalesOperationsSystem/blob/main/LICENSE)
