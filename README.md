@@ -12,7 +12,7 @@ Multidisciplinary integrated project (PIM) for the 2nd semester of the ADS cours
 
 <!--- # "Verify icons availability here https://github.com/tandpfun/skill-icons" -->
 
-[![My Skills](https://skillicons.dev/icons?i=c,github,vscode)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=c,github,git,vscode)](https://skillicons.dev)
 
 ## Getting Started
 
