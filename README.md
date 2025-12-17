@@ -18,6 +18,7 @@ Multidisciplinary integrated project (PIM) for the 2nd semester of the ADS cours
 - [🎥 Demonstration](#demonstration)
 - [🚀 Getting Started](#started)
   - [⚙️ Prerequisites](#prerequisites)
+  - [💻 Console Mode Version](#consolemode)
 - [📂 Folder Structure](#folder)
 - [🤝 Contributors](#contributors)
 - [📄 Licenses](#licenses)
@@ -40,6 +41,21 @@ The following software must be installed and configured:
 - [Visual Studio Code](https://code.visualstudio.com/download)
   - [C/C++ extension](https://code.visualstudio.com/docs/languages/cpp)
 - [MinGW](https://code.visualstudio.com/docs/cpp/config-mingw#_prerequisites)
+
+<br>
+
+<h4 id="consolemode">💻 Console Mode Version:</h4>
+
+1. Run Visual Studio Code and open the ‘PIM-SalesOperationsSystem’ folder located in the path where the repository was cloned.
+
+2. Next, open the ‘SalesOperationsSystemController.c’ script located in the ‘PIM-SalesOperationsSystem\src\scripts’ path and click the ```C/C++: Compile & Run``` button in the upper right corner of the screen.
+<p align="left">
+<img width="1855" height="276" alt="image" src="https://github.com/user-attachments/assets/201b23d7-c337-4149-bdb0-e7b8c5b6b5cd" />
+</p>
+
+3. After compiling and running the script, a terminal will open in VS Code where you can test the system in console mode.
+
+Note: It is also possible to test the system executable, which has a list of pre-registered foods, by running the file ‘Sales.Operations.System.v0.1.2.exe’ located in the path ‘PIM-SalesOperationsSystem\src\software’.
 
 <br>
 
