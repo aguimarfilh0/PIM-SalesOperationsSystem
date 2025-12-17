@@ -1,6 +1,6 @@
 <h1 align="center" style="font-weight: bold;">Sales Operations System 💻</h1>
 <p align="left">
-Multidisciplinary integrated project (PIM) for the 2nd semester of the ADS course at UNIP college. It is a console-mode system that handles sales operations for a fruit and vegetable store.
+Integrated multidisciplinary project (PIM) for the second semester of the ADS course at UNIP college. It is a console-mode system that manages the sales operations of a fruit and vegetable store.
 </p>
 
 <br>
